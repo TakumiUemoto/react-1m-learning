@@ -10,6 +10,7 @@ function Counter(): JSX.Element {
       const [msg, setMsg] = useState<string>("　");
       const [selectedValue, setSelectedValue] = useState<number>(1);
   
+      //ボタンクリック時
       const onClickButton = () => {
 
         setNum(num + 1*selectedValue);
@@ -19,14 +20,16 @@ function Counter(): JSX.Element {
         }else{
             setMsg("偶数です");
         }
-  
+
       }
   
+      //リセットボタンクリック時
       const onClickResetButton = () => {
         setNum(0);
         setMsg("　");
       }
       
+      //ラジオボタンの選択変更時
       const handleRadioChange = (value: number) => {
         setSelectedValue(value);
         setNum(0);
