@@ -58,7 +58,9 @@ function UsersSample(): JSX.Element {
 			<h2>ユーザーリスト</h2>
 			<UserListTableSample tableData={userListData} />
 
-			<Link to="/">- Home -</Link>
+			<div style={{ marginTop: '2rem' }}>
+				<Link to="/">- Home -</Link>
+			</div>
 		</>
 	)
 }

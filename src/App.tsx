@@ -43,7 +43,9 @@ function App() {
 						textAlign: 'left'
 					}}
 				>
-					{/* Add page Link */}
+					<li>
+						<Link to="/counter-sample">/counter-sample</Link>
+					</li>
 					<li>
 						<Link to="/users-sample">/users-sample</Link>
 					</li>
