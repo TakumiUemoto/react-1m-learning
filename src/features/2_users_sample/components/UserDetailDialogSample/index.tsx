@@ -15,12 +15,12 @@ type Props = {
 }
 
 /**
- * ユーザー詳細ダイアログ
+ * ユーザー詳細ダイアログ サンプル
  * @param id - ユーザーID
  * @param open - ダイアログの開閉状態
  * @param onClose - ダイアログを閉じる関数
  *
- * @returns ユーザー詳細ダイアログ
+ * @returns ユーザー詳細ダイアログ サンプル
  */
 function UserDetailDialogSample({ id, open, onClose }: Props): JSX.Element {
 	// 状態管理
