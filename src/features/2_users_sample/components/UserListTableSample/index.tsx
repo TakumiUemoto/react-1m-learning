@@ -9,6 +9,11 @@ type Props = {
 
 const excludeKeys = ['username', 'website', 'email', 'company', 'address', 'phone']
 
+/**
+ * ユーザーリストテーブル サンプル
+ * @param tableData - ユーザーリストデータ
+ * @returns ユーザーリストテーブル サンプル
+ */
 function UserListTableSample({ tableData }: Props): JSX.Element {
 	const [selectedUserId, setSelectedUserId] = useState<number | null>(null)
 
@@ -22,36 +27,13 @@ function UserListTableSample({ tableData }: Props): JSX.Element {
 
 	return (
 		<>
-			<table
-				style={{
-					borderCollapse: 'collapse',
-					width: '100%',
-					margin: '1rem 0'
-				}}
-			>
+			<table style={tableStyle}>
 				<thead>
 					<tr>
-						<th
-							style={{
-								border: '1px solid #ddd',
-								padding: '8px',
-								textAlign: 'left',
-								color: '#333',
-								backgroundColor: '#f4f4f4'
-							}}
-						></th>
+						<th style={thStyle}></th>
 						{filteredData.length > 0 &&
 							Object.keys(filteredData[0]).map((key) => (
-								<th
-									key={key}
-									style={{
-										border: '1px solid #ddd',
-										padding: '8px',
-										textAlign: 'left',
-										color: '#333',
-										backgroundColor: '#f4f4f4'
-									}}
-								>
+								<th key={key} style={thStyle}>
 									{key}
 								</th>
 							))}
@@ -60,24 +42,13 @@ function UserListTableSample({ tableData }: Props): JSX.Element {
 				<tbody>
 					{filteredData.map((row) => (
 						<tr key={row.id}>
-							<td
-								style={{
-									border: '1px solid #ddd',
-									padding: '8px'
-								}}
-							>
+							<td style={tdStyle}>
 								<Button variant="contained" size="small" onClick={() => setSelectedUserId(row.id)}>
 									詳細
 								</Button>
 							</td>
 							{Object.values(row).map((value, j) => (
-								<td
-									key={j}
-									style={{
-										border: '1px solid #ddd',
-										padding: '8px'
-									}}
-								>
+								<td key={j} style={tdStyle}>
 									{typeof value === 'object' ? JSON.stringify(value) : String(value)}
 								</td>
 							))}
@@ -98,3 +69,23 @@ function UserListTableSample({ tableData }: Props): JSX.Element {
 }
 
 export default UserListTableSample
+
+/**
+ * CSS Properties
+ */
+const tableStyle: React.CSSProperties = {
+	borderCollapse: 'collapse',
+	width: '100%',
+	margin: '1rem 0'
+}
+const thStyle: React.CSSProperties = {
+	border: '1px solid #ddd',
+	padding: '8px',
+	textAlign: 'left',
+	color: '#333',
+	backgroundColor: '#f4f4f4'
+}
+const tdStyle: React.CSSProperties = {
+	border: '1px solid #ddd',
+	padding: '8px'
+}

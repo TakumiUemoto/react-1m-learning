@@ -29,8 +29,8 @@ export type UserSample = {
 }
 
 /**
- * 第二週目の課題：ユーザーリスト画面
- * @returns ユーザーリスト画面
+ * 第二週目の課題：ユーザーリスト画面 サンプル
+ * @returns ユーザーリスト画面 サンプル
  */
 function UsersSample(): JSX.Element {
 	// ロジック・状態管理
