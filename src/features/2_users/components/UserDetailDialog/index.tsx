@@ -13,6 +13,9 @@ type Props = {
  * @returns ユーザー詳細ダイアログ
  */
 function UserDetailDialog({ open, onClose }: Props): JSX.Element {
+	// TODO: propsで渡されたIDを元に単一のユーザー情報を取得する
+	// path: ${import.meta.env.VITE_API_URL_USERS_GET}/${id}
+
 	return (
 		<Dialog open={open} onClose={onClose}>
 			<DialogTitle>ユーザー詳細</DialogTitle>

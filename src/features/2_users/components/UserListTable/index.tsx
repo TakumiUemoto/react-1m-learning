@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // TODO: 上の行のコメントは削除すること。
 
+import UserDetailDialog from '../UserDetailDialog'
+
 type Props = {
 	// TODO: anyではなく、適切な型を指定すること。
 	tableData: any[]
@@ -30,6 +32,12 @@ function UserListTable({ tableData }: Props): JSX.Element {
 					</tr>
 				</tbody>
 			</table>
+
+			{/* TODO: 
+				- ユーザー詳細ダイアログを表示する
+				- IDを渡し、ユーザー詳細ダイアログを開く
+			*/}
+			<UserDetailDialog open={false} onClose={() => {}} />
 		</>
 	)
 }
