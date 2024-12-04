@@ -29,7 +29,7 @@ const radioInfo: RadioOption[] = [
 ];
 
 function Counter(): JSX.Element {
-  // カウンターのロジック・状態管理
+	// カウンターのロジック・状態管理
 
   //Stateの定義
   const [num, setNum] = useState<number>(0);
