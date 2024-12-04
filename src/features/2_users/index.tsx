@@ -1,6 +1,39 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import UserListTable from './components/UserListTable'
+
+export type User = {
+	id: number
+	name: string
+	username: string
+	email: string
+	address: {
+		street: string
+		suite: string
+		city: string
+		zipcode: string
+		geo: {
+			lat: string
+			lng: string
+		}
+	}
+	phone: string
+	website: string
+	company: {
+		name: string
+		catchPhrase: string
+		bs: string
+	}
+}
+
+const fetchPosts = async (): Promise<User[]> => {
+	console.log('fetching-start')
+
+	const res = await fetch('https://jsonplaceholder.typicode.com/users')
+
+	console.log('fetching-finish')
+	return res.json()
+}
 
 /**
  * 第二週目の課題：ユーザーリスト画面
@@ -9,18 +42,16 @@ import UserListTable from './components/UserListTable'
 function Users(): JSX.Element {
 	// ロジック・状態管理
 
+	const [user, setUser] = useState<User[]>([])
+
 	// 初回描画時にユーザーリストを取得
 	useEffect(() => {
-		const fetchUserList = async () => {
-			const apiUrl = import.meta.env.VITE_API_URL_USERS_GET
-			// TODO: ユーザーリストを取得し、stateに格納して扱う
-			console.log(apiUrl) // TODO: こちらは削除
-		}
-
-		return () => {
-			fetchUserList()
-		}
+		;(async function () {
+			const data = await fetchPosts()
+			setUser(data)
+		})()
 	}, [])
+
 	return (
 		<>
 			<h2>ユーザーリスト</h2>
@@ -28,7 +59,7 @@ function Users(): JSX.Element {
 				- ユーザーリストを表示するテーブルを実装する（コンポーネント化推奨）
 				- APIから取得したデータを渡すこと。
 			*/}
-			<UserListTable tableData={[]} />
+			<UserListTable tableData={user} />
 
 			<div style={{ marginTop: '2rem' }}>
 				<Link to="/">- Home -</Link>
